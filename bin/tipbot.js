@@ -168,17 +168,13 @@ client.addListener('message', function(from, channel, message) {
   if(channel == client.nick) channel = from;
 
   // comands that don't require identifying
-  if(command == 'help' || command == 'terms')
-  {
-    var msg = [];
-    for(var i = 0; i < settings.messages[command].length; i++) {
-      msg.push(settings.messages[command][i].expand({}));
-    }
-
-    client.say(from, msg.join(', '));
-
-    return;
-  }
+ if(command == 'help' || command == 'terms') {
+var msg = [];
+for(var i = 0; i < settings.messages[command].length; i++) {
+client.say(from, settings.messages[command][i].expand({}));
+}
+return;
+}
 
   // if not that, message will be undefined for some reason
   // todo: find a fix for that
@@ -358,6 +354,37 @@ client.addListener('message', function(from, channel, message) {
           })
         });
         break;
+                	
+
+    	
+
+    case 'info':
+                            coin.getMiningInfo(function(err, mininginfo) {
+                              if(err) {
+                                    winston.error('Error in !info command', err);
+                                    client.say(channel, settings.messages.error.expand({name: from}));
+                                    return;
+                              }
+     
+                              coin.getInfo(function(err, info) {
+                                    if(err) {
+                                      winston.error('Error in !info command', err);
+                                      client.say(channel, settings.messages.error.expand({name: from}));
+                                      return;
+                                    }
+                                   
+                                    client.say(channel, settings.messages.info.expand({
+                                            blocks: mininginfo.blocks,
+                                         //   pow_diff: mininginfo['PoW difficulty'],
+                                            pos_diff: mininginfo['PoS difficulty'],
+                                            moneysupply: info.moneysupply,
+                                            netmhashps: mininginfo.networkhashps/1000000
+                                    }));
+                              });
+                            });
+                    break;
+
+
       case 'withdraw':
         var match = message.match(/^.?withdraw (\S+)$/);
         if(match == null) {
