@@ -151,7 +151,7 @@ client.addListener('error', function(message) {
  
 var last_active = {};
 client.addListener('message', function(from, channel, message) {
-  last_active[from] = Date.now();
+  if(channel != client.nick){last_active[from] = Date.now();}
   var match = message.match(/^(!?)(\S+)/);
   if(match == null) return;
   var prefix = match[1];
