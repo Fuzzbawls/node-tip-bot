@@ -1,15 +1,15 @@
-connection: 
+connection:
   host: irc.freenode.net
   port: 6697
   secure: true
   debug: false
-login: 
-  nickname: nodetip
-  username: nodetip
-  realname: node.js dogecoin tipping bot
+login:
+  nickname: hyptimebomb
+  username: hyptimebomb
+  realname: node.js hyperstake timebomb bot
   nickserv_password: pass
-channels: 
-  - '##tipbots'
+channels:
+  - '##tbtest'
 log:
   file: tipbot.log
 rpc:
@@ -23,13 +23,44 @@ coin:
   min_confirmations: 3
   min_tip: 10
   min_rain: 1
-  short_name: Đ
-  full_name: dogecoin
+  short_name: HYP
+  full_name: HyperStake
 webadmin:
   enabled: false
   port: 8080
   users:
     unek: 123
+timebomb:
+  # min wires in game
+  minWires: 3
+  # max wires in game
+  maxWires: 5
+  # bomb disarm time [in milliseconds, 30000 = 30s]
+  disarmTime: 30000
+  # time for game decisions (not cutwire) - !again or !stop - [in milliseconds, 60000 = 60s]
+  decisionTime: 60000
+  # max pot size, when overflowed rain will happen
+  maxPot: 10
+  # min bet value
+  minBet: 1
+  # max bet value
+  maxBet: 5
+  # sustain_percent_of
+  sustainPercent: 25,
+  # user stake will be multiplied by this factor if correct wire chosen
+  stakeMultiplicator: 2
+  # if positive, countdown message will be sent every X seconds (5 = 5s)
+  showStatusInterval: 5
+  # if positive, shows countdow every X seconds (5 = 5s)
+  showDecisionReminderInterval: 15
+  # fee on game resignation (if user won 10 coins, 9 coins will be sent to user account, 1 to bot's payout account)
+  fee: 1
+  # kick user from channel when bomb explodes, not used yet
+  kickUserOnLose: false
+  # payout pot account name
+  potAccountName: timebomb_pot
+  # rain pot account name
+  rainPotAccountName: timebomb_rainpot
 commands:
   help:
     pm: true
@@ -52,6 +83,31 @@ commands:
   rain:
     pm: false
     channel: true
+  rainactive:
+    enabled: true
+    pm: false
+    channel: true
+  bomb:
+    pm: false
+    channel: true
+  again:
+    pm: false
+    channel: true
+  stop:
+    pm: false
+    channel: true
+  cutwire:
+    pm: false
+    channel: true
+  listaccounts:
+    pm: false
+    channel: false
+  listcommands:
+    pm: false
+    channel: false
+  info:
+    pm: false
+    channel: true
 messages:
   error: 'Sorry %name%, something went wrong.'
   no_funds: "Sorry %name%, you don't have enough funds (you're %short%%short_name% short)"
@@ -67,7 +123,7 @@ messages:
   tip_self: "Sorry %name%, you can't tip yourself!"
   invalid_amount: 'Sorry %name%, "%amount%" is not a correct amount.'
   rain: '%name% rained %amount%%short_name% upon %list%.'
-  withdraw_success: 
+  withdraw_success:
     - '%name%: %amount%%short_name% has been withdrawn from your account to %address%'
     - 'You have been charged %withdrawal_fee%%short_name% withdrawal fee.'
     - 'Transaction %transaction% completed.'
@@ -82,3 +138,23 @@ messages:
   terms:
     - 'There are no fees to use %nick%, with the exception of %withdrawal_fee%%short_name% fee on withdrawals.'
     - 'In no event shall %nick% be responsible in the event of lost, stolen or misdirected funds.'
+  info: 'Coin: %short_name%, Height: %blocks%, PoS Diff: %pos_diff%, Network Hashrate: %netmhashps% MH/s, Money Supply: %moneysupply%.'
+  timebomb:
+    usage: 'Usage: !bomb <amount>, min. bet %min_bet%, max. bet %max_bet.'
+    cutwireusage: 'Usage: !cutwire <color>'
+    nosuchcolor: 'There is no such wire!'
+    bombactivation: 'ROUND %round%: Diffuse the bomb by cutting the correct wire (!cutwire <color>). There are %wiresCount% wires. They are %wiresColors%.'
+    bombalreadyactivated: 'Bomb already activated. %player% tries to diffuse it. %timeLeft% seconds left...'
+    gameinprogress: 'Game already in progress. Player: %player%'
+    timeleft: 'Hurry up! %timeLeft% seconds left...'
+    correct: 'Correct! Reward %reward% %short_name% - your balance is now %balance% %short_name% - !again to try double again or !stop to withdraw (withdrawal fee %fee% %short_name%)'
+    timeisup: 'Time is up!!!'
+    boom: '***BOOM*** You lose - %lost_amount% %short_name% deposited in rain pot, rain @ %max_rain_fund% %short_name% :: [RainPot %rain_pot_balance% %short_name%] [Pot %pot_balance% %short_name%]'
+    resign: 'Congratulations! You''ve won %won% %short_name% (-fee, includes your bet). Check your balance with !balance anytime'
+    potoverflow: 'Pot reached its limit! Now will rain!'
+    wrongbet: 'Sorry, bet has to be between %min_bet% and %max_bet% %short_name%'
+    nofunds: 'Sorry, you don''t have so many %short_name%'
+    nofundsinpot: 'Sorry, next doubling is not possible, pot has only %pot_balance% %short_name%'
+    nofundsinpottostart: 'Sorry, pot is too low on funds to start new game with that bet, try lower bet'
+    decisiontimeleft: 'Waiting for decision (!again or !stop) just for %time_left% seconds, otherwise your balance will be lost...'
+    decisiontimeisup: 'Sorry! No decision so balance is deposited in pot. Ready for new player.'

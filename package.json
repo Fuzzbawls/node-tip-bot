@@ -2,7 +2,7 @@
   "name": "node-tip-bot",
   "version": "1.0.1",
   "description": "node.js based tipping bot for dogecoin",
-  "main": "bin/tipbot",
+  "main": "tipbot",
   "dependencies": {
     "irc": "~0.3.6",
     "js-yaml": "~3.0.1",
@@ -11,10 +11,15 @@
     "swig": "^1.3.2",
     "express": "3.4.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.18.2",
+    "chai-spies": "^0.5.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/tipbot"
+    "test": "mocha -w",
+    "start": "node tipbot",
+    "testonce": "mocha"
   },
   "repository": {
     "type": "git",
@@ -27,9 +32,6 @@
   },
   "homepage": "https://github.com/unek/node-tip-bot",
   "keywords": [
-    "dogecoin",
-    "bitcoin",
-    "litecoin",
     "altcoin",
     "tip",
     "tipbot",

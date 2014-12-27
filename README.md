@@ -87,10 +87,19 @@ To run the bot simply use `node bin/tipbot` or `npm start`.
 | `help`      |                   | displays configured help message (by default similiar to this one)
 | `terms`     |                   | displays terms and conditions for using the tip bot
 | `rain`      | <amount> [max]    | splits `amount` coins between `max` users on the channel
+| `info`      |                   | show info about coin's network
+
+## Time Bomb game commands
+
+| **Command** | **Arguments**     | **Description**
+|-------------|-------------------|--------------------------------------------------------------------
+| `bomb`      | <amount>          | start game with given bet
+| `cutwire`   | <color>           | cut wire of given color
+| `again`     |                   | play next round
+| `stop`      |                   | resign and take profit
 
 ## Donations
 Donations are welcome! If you like my bot and want to donate me, here are my wallet addresses:
 
 * **Bitcoin**: 1G7T2JNDnbxo3txFWZSuV5oYq8qwtSEg51
 * **Dogecoin**: DGLT1pTSKAXLSSSz1NGFgZNLioDyHdaDyA
-

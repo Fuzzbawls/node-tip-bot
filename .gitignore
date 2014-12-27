@@ -10,11 +10,12 @@ lcov.info
 *.out
 *.pid
 *.gz
+*.txt
 
 pids
 logs
 results
 build
 .grunt
-
 node_modules
+config/config.yml
