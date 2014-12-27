@@ -86,15 +86,15 @@ To run the bot simply use `node bin/tipbot` or `npm start`.
 | `tip`       | `<nick> <amount>` | sends the specified amount of coins to the specified nickname
 | `help`      |                   | displays configured help message (by default similiar to this one)
 | `terms`     |                   | displays terms and conditions for using the tip bot
-| `rain`      | <amount> [max]    | splits `amount` coins between `max` users on the channel
+| `rain`      | `<amount> [max]`  | splits `amount` coins between `max` users on the channel
 | `info`      |                   | show info about coin's network
 
 ## Time Bomb game commands
 
 | **Command** | **Arguments**     | **Description**
 |-------------|-------------------|--------------------------------------------------------------------
-| `bomb`      | <amount>          | start game with given bet
-| `cutwire`   | <color>           | cut wire of given color
+| `bomb`      | `<amount>`        | start game with given bet
+| `cutwire`   | `<color>`         | cut wire of given color
 | `again`     |                   | play next round
 | `stop`      |                   | resign and take profit
 

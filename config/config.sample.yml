@@ -40,7 +40,7 @@ timebomb:
   # time for game decisions (not cutwire) - !again or !stop - [in milliseconds, 60000 = 60s]
   decisionTime: 60000
   # max pot size, when overflowed rain will happen
-  maxPot: 10
+  maxPot: 1000
   # min bet value
   minBet: 1
   # max bet value
@@ -70,7 +70,7 @@ commands:
     channel: true
   balance:
     pm: true
-    channel: false
+    channel: true
   withdraw:
     pm: true
     channel: false
@@ -140,7 +140,7 @@ messages:
     - 'In no event shall %nick% be responsible in the event of lost, stolen or misdirected funds.'
   info: 'Coin: %short_name%, Height: %blocks%, PoS Diff: %pos_diff%, Network Hashrate: %netmhashps% MH/s, Money Supply: %moneysupply%.'
   timebomb:
-    usage: 'Usage: !bomb <amount>, min. bet %min_bet%, max. bet %max_bet.'
+    usage: 'Usage: !bomb <amount>, min. bet %min_bet%, max. bet %max_bet%.'
     cutwireusage: 'Usage: !cutwire <color>'
     nosuchcolor: 'There is no such wire!'
     bombactivation: 'ROUND %round%: Diffuse the bomb by cutting the correct wire (!cutwire <color>). There are %wiresCount% wires. They are %wiresColors%.'
