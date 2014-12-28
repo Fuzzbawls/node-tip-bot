@@ -3,7 +3,9 @@ var settings = require('./lib/settings'),
     logger = require('./lib/logger')(settings),
     coin = require('./lib/coin-client')(settings),
     webadmin = require('./lib/webadmin/app'),
-    commands = require('./lib/commands')(coin, ircClient, settings);
+    commands = require('./lib/commands')(coin, ircClient, settings),
+    last_active = {},
+    locks = [];
 
 // handle sigint
 process.on('exit', function() {
@@ -27,6 +29,9 @@ String.prototype.expand = function(values) {
 }
 
 ircClient.addListener('message', function(from, channel, message) {
+  if (channel != ircClient.nick) {
+      last_active[from] = Date.now();
+  }
   var match = message.match(/^(!?)(\S+)/);
   if(match == null) return;
   var prefix  = match[1];
@@ -79,3 +84,5 @@ if (settings.webadmin.enabled) {
 
 // export commands to use them in other modules
 exports.commands = commands;
+exports.last_active = last_active;
+exports.locks = locks;
