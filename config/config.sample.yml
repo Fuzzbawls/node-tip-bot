@@ -154,7 +154,7 @@ messages:
     timeleft: 'Hurry up! %timeLeft% seconds left...'
     correct: 'Correct! Reward %reward% %short_name% - your balance is now %balance% %short_name% - !again to try double again or !stop to withdraw (withdrawal fee %fee% %short_name%)'
     timeisup: 'Time is up!!!'
-    boom: '***BOOM*** You lose - %lost_amount% %short_name% deposited in rain pot, rain @ %max_rain_fund% %short_name% :: [RainPot %rain_pot_balance% %short_name%] [Pot %pot_balance% %short_name%]'
+    boom: '***BOOM*** %player% loses - %lost_amount% %short_name% deposited in rain pot, rain @ %max_rain_fund% %short_name% :: [RainPot %rain_pot_balance% %short_name%] [Pot %pot_balance% %short_name%]'
     resign: 'Congratulations! You''ve won %won% %short_name% (-fee, includes your bet). Check your balance with !balance anytime'
     potoverflow: 'Pot reached its limit! Now will rain!'
     wrongbet: 'Sorry, bet has to be between %min_bet% and %max_bet% %short_name%'
