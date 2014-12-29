@@ -99,6 +99,12 @@ commands:
   cutwire:
     pm: false
     channel: true
+  cut:
+    pm: false
+    channel: true
+  pot:
+    pm: false
+    channel: true
   listaccounts:
     pm: false
     channel: false
@@ -163,3 +169,4 @@ messages:
     nofundsinpottostart: 'Sorry, pot is too low on funds to start new game with that bet, try lower bet'
     decisiontimeleft: 'Waiting for decision (!again or !stop) just for %time_left% seconds, otherwise your balance will be lost...'
     decisiontimeisup: 'Sorry! No decision so balance is deposited in pot. Ready for new player.'
+    potinfo: 'Rain pot has %rain_pot_balance% %short_name%, Fund pot has %pot_balance% %short_name%, rain @ %max_rain_fund% %short_name%'
