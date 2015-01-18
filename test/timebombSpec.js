@@ -2,7 +2,7 @@
 var chai = require("chai");
 var expect = chai.expect;
 var spies = require('chai-spies');
-var TimeBomb = require("../lib/timebomb");
+var TimeBomb = require("../lib/games/timebomb");
 var timebomb;
 var channelName = 'channel';
 var playerName = 'bob';

@@ -11,7 +11,7 @@ var settings = require('./lib/settings'),
 process.on('exit', function() {
   logger.info('Exiting...');
   if(ircClient != null) {
-    ircClient.disconnect('My master ordered me to leave.');
+    ircClient.disconnect('Hasta la vista, baby.');
   }
 });
 
