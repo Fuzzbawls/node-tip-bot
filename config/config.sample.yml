@@ -114,6 +114,9 @@ commands:
   info:
     pm: false
     channel: true
+  val:
+    pm: true
+    channel: true
 messages:
   error: 'Sorry %name%, something went wrong.'
   no_funds: "Sorry %name%, you don't have enough funds (you're %short%%short_name% short)"
@@ -170,3 +173,7 @@ messages:
     decisiontimeleft: 'Waiting for decision (!again or !stop) just for %time_left% seconds, otherwise your balance will be lost...'
     decisiontimeisup: 'Sorry! No decision so balance is deposited in pot. Ready for new player.'
     potinfo: 'Rain pot has %rain_pot_balance% %short_name%, Fund pot has %pot_balance% %short_name%, rain @ %max_rain_fund% %short_name%'
+  val:
+    usage: 'Usage: !val [amount, default:1] btc eur, eg. !val 10 btc usd, !val hyp btc'
+    error: 'Error, cannot retrieve value for this currency'
+    exchanged: 'Currently %amount% %base% is worth %value% %target% (exchanged at %price% %target%)'
