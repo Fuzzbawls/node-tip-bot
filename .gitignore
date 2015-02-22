@@ -19,3 +19,4 @@ build
 .grunt
 node_modules
 config/config.yml
+tipbot-data

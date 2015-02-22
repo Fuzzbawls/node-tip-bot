@@ -117,6 +117,9 @@ commands:
   val:
     pm: true
     channel: true
+  diff:
+    pm: false
+    channel: true
 messages:
   error: 'Sorry %name%, something went wrong.'
   no_funds: "Sorry %name%, you don't have enough funds (you're %short%%short_name% short)"
@@ -177,3 +180,4 @@ messages:
     usage: 'Usage: !val [amount, default:1] btc eur, eg. !val 10 btc usd, !val hyp btc'
     error: 'Error, cannot retrieve value for this currency'
     exchanged: 'Currently %amount% %base% is worth %value% %target% (exchanged at %price% %target%)'
+  diff: 'Coin: %short_name% | Current Difficulty: %diff% | ATH: %ath% | ATL: %atl%'
