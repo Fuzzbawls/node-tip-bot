@@ -139,6 +139,11 @@ messages:
     - '%name%: %amount%%short_name% has been withdrawn from your account to %address%'
     - 'You have been charged %withdrawal_fee%%short_name% withdrawal fee.'
     - 'Transaction %transaction% completed.'
+  partial_withdraw_success:
+    - '%name%: %amount%%short_name% has been withdrawn from your account to %address%'
+    - 'You have been charged %withdrawal_fee%%short_name% withdrawal fee.'
+    - 'You have %amount_left%%short_name% left in your account.'
+    - 'Transaction %transaction% completed.'
   help:
     - 'You can use following commands:'
     - 'balance - displays your current wallet balance'
