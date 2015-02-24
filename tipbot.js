@@ -20,7 +20,7 @@ String.prototype.expand = function(values) {
   var global = {
     nick: ircClient.nick
   }
-  return this.replace(/%([a-zA-Z_]+)%/g, function(str, variable) {
+  return this.replace(/%([a-zA-Z0-9_]+)%/g, function(str, variable) {
     return typeof(values[variable]) == 'undefined' ?
       (typeof(settings.coin[variable]) == 'undefined' ?
         (typeof(global[variable]) == 'undefined' ?
