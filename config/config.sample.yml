@@ -1,3 +1,4 @@
+admin: zeewolf
 connection:
   host: irc.freenode.net
   port: 6697
@@ -55,8 +56,6 @@ timebomb:
   showDecisionReminderInterval: 15
   # fee on game resignation (if user won 10 coins, 9 coins will be sent to user account, 1 to bot's payout account)
   fee: 1
-  # kick user from channel when bomb explodes, not used yet
-  kickUserOnLose: false
   # payout pot account name
   potAccountName: timebomb_pot
   # rain pot account name
@@ -120,7 +119,11 @@ commands:
   diff:
     pm: false
     channel: true
+  total:
+    pm: true
+    channel: false
 messages:
+  total: 'Total balance: %total% %short_name%'
   error: 'Sorry %name%, something went wrong.'
   no_funds: "Sorry %name%, you don't have enough funds (you're %short%%short_name% short)"
   not_identified: '%name%: You need to be identified with NickServ to tip.'
@@ -155,7 +158,7 @@ messages:
   terms:
     - 'There are no fees to use %nick%, with the exception of %withdrawal_fee%%short_name% fee on withdrawals.'
     - 'In no event shall %nick% be responsible in the event of lost, stolen or misdirected funds.'
-  info: 'Coin: %short_name%, Height: %blocks%, PoS Diff: %pos_diff%, Network Hashrate: %netmhashps% MH/s, Money Supply: %moneysupply%.'
+  info: 'Coin: %short_name%, Height: %blocks%, PoS Diff: %pos_diff%, Money Supply: %moneysupply%.'
   timebomb:
     usage: 'Usage: !bomb <amount>, min. bet %min_bet%, max. bet %max_bet%.'
     cutwireusage: 'Usage: !cutwire <color>'
