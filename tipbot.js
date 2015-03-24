@@ -18,6 +18,10 @@ process.on('exit', function() {
     }
 });
 
+function escapeRegexpChars(str) {
+    return (str+'').replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&");
+}
+
 // simple templates
 String.prototype.expand = function(values) {
     var commonVars = {
@@ -38,8 +42,7 @@ ircClient.addListener('message', function(from, channel, message) {
     if (channel != ircClient.nick) {
         last_active[from] = Date.now();
     }
-    var match = (new RegExp('^(' + (settings.commandprefix || '!') + '?)(\\S+)')).exec(message);
-
+    var match = (new RegExp('^(' + (escapeRegexpChars(settings.commandprefix) || '!') + '?)(\\S+)')).exec(message);
     if (match == null) {
         return;
     }
@@ -65,7 +68,11 @@ ircClient.addListener('message', function(from, channel, message) {
     // comands that don't require identifying
     // guest mode commands - no need for identification with nickserv
     if (settings.commands[command].guest === true) {
-        commands[command](from, channel, message);
+        // Handle commands
+        var fn = commands[command];
+        if (fn) {
+            (fn.run || fn)(from, channel, message);
+        }
         return;
     }
 
